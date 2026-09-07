@@ -203,7 +203,7 @@ Turning start-with-Windows off, or closing the console, stops the console but no
 
 19.2 Downloads. When a repair runs, the console downloads onto your computer, from their vendors, the tools and packages in Sections 5.2, 5.3 and 11.4; Windows and antivirus products may warn about some of them.
 
-19.3 A hidden data folder beside the program holds your Shop's connection details, the unattended-access token (sealed to this computer), your recorded consent, logs, reports and downloaded tools; no password of yours is stored in plain text. If the BitLocker key option was used during a repair, a copy of your recovery key sits in the logs folder; ask your Shop to remove it.
+19.3 A hidden data folder beside the program holds your Shop's connection details, the unattended-access token (sealed to this computer), your recorded consent, logs, reports and downloaded tools; no password of yours is stored in plain text. If the BitLocker key option was used during a repair, a copy of your recovery key sits in the logs folder; ask your Shop to remove it. When a technician signs in on your computer (Section 10.7), what that session needs about the Shop's other machines is held in memory only, and ending it - by signing out, by the two-hour limit, or by quitting the program - deletes their credential, that list and any unsent notes from your computer.
 
 ### 20. Backups and requests about your data
 
