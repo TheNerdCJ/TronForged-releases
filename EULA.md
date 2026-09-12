@@ -136,15 +136,15 @@ Licensed, not sold, and there is no TronForged cloud: each repair shop (the "Sho
 
 12.4 The Shop server must be reachable on a public address with one forwarded port; Customers never forward anything. Exposing it to the internet is the Shop's decision and risk, and the Shop must keep the server updated.
 
-12.5 The Software deletes no Customer data on its own; the Shop must meet its own retention and deletion duties, by other means where the Software offers none (Section 13.3).
+12.5 The Software deletes no Customer data on its own. Stored backups and images can be deleted by hand from the Shop server (Section 13.3); everything else the Shop must meet its own retention and deletion duties for, by other means where the Software offers none.
 
 ### 13. Backups in the Shop's custody
 
-13.1 Backups are encrypted on the computer before they leave; the Shop server and any destination hold ciphertext only.
+13.1 Backups are sealed by the Shop server when they arrive, not by the computer before they leave. The console sends the content over its encrypted connection to the Shop server, and the server encrypts each piece under a per-backup key before writing it to its store, so the stored files are ciphertext but the server handles the content in the clear on arrival and holds the key. Anything the Software copies to a destination the Shop chose instead - a folder on a local disk or an SMB share, including whole-machine images - is written as ordinary files with no encryption of its own.
 
-13.2 The Shop can read them by default: per-backup keys are wrapped under the server's own secret, so the Shop can restore and read a Customer's backup without the Customer present, and must protect that data and use it only for the Customer's purposes. A Customer may opt in to a passphrase, after which the server cannot read the backups; a lost passphrase is permanent loss unless the audited, opt-in escrow was enabled, and the Licensor cannot recover any key.
+13.2 The Shop can read them by default: per-backup keys are wrapped under the server's own secret, so the Shop can restore and read a Customer's backup without the Customer present, and must protect that data and use it only for the Customer's purposes. A customer-held passphrase, after which the server could not read the backups, is built into the file format and the server but is NOT offered by any console in this release - there is no screen that sets one, so treat every backup as readable by the Shop. If that changes, a lost passphrase is permanent loss unless the audited, opt-in escrow was enabled, and the Licensor cannot recover any key in any case.
 
-13.3 Nothing is deleted. There is deliberately no deletion path for stored backups - retention policies shown in the product are a preview only and delete nothing, the store only grows, and per-Customer quotas are enforced at upload; a deletion request cannot be honoured through the product, and the Shop must remove the data by other means.
+13.3 Deletion is manual, not automatic. A technician can delete a stored backup or image from the Shop server, and a Customer can ask the Shop to do so; there is no automatic deletion, because retention policies shown in the product are a preview only and delete nothing, the store otherwise only grows, and per-Customer quotas are enforced at upload. Nothing deletes a Customer's data without somebody choosing to.
 
 13.4 Restores run from inside Windows only. "Boot in VM" runs an image under Hyper-V for inspection only; Windows may report itself unactivated there, and it is not a way to run a Customer's Windows license. The Shop must test the backups it relies on.
 
@@ -199,7 +199,7 @@ Turning start-with-Windows off, or closing the console, stops the console but no
 
 ### 19. What the console sends, stores and downloads
 
-19.1 To your Shop, and nobody else. The console sends your Shop the reporting in Section 12.2, technician reports and, if you use it, your backups, encrypted before they leave; no setting turns that off short of disconnecting or uninstalling, and nothing goes to the Licensor or anyone else.
+19.1 To your Shop, and nobody else. The console sends your Shop the reporting in Section 12.2, technician reports and, if you use it, your backups - over an encrypted connection, and your Shop's server encrypts them when it stores them (Section 13.1); no setting turns that off short of disconnecting or uninstalling, and nothing goes to the Licensor or anyone else.
 
 19.2 Downloads. When a repair runs, the console downloads onto your computer, from their vendors, the tools and packages in Sections 5.2, 5.3 and 11.4; Windows and antivirus products may warn about some of them.
 
@@ -207,7 +207,7 @@ Turning start-with-Windows off, or closing the console, stops the console but no
 
 ### 20. Backups and requests about your data
 
-20.1 If you back up to your Shop, it can restore and read those backups by default; for backups only you can open, ask about customer-managed keys (a lost passphrase loses the data; Section 13.2). Nothing in the product deletes a stored backup (Section 13.3); a deletion request to your Shop is met outside it.
+20.1 If you back up to your Shop, it can restore and read those backups; no console in this release can set a passphrase that would stop it (Section 13.2). Nothing deletes a stored backup on its own, but your Shop can delete one on request (Section 13.3).
 
 20.2 Requests about your data - to see, correct or delete it, or to learn who connected and when - go to your Shop, which holds it; the Licensor holds nothing about you.
 
@@ -215,7 +215,7 @@ Turning start-with-Windows off, or closing the console, stops the console but no
 
 ### 21. Development status, unsigned binaries and known limits
 
-21.1 Unverified on real hardware. At the effective date the features never exercised on real hardware include unattended access before sign-in and while the console is not running (including its notice), remote update installs and restarts, the TLS front door, dynamic DNS, the move from PostgreSQL to the embedded database, desktop-duplication capture and multiple monitors, and Square charges. Only attended remote desktop has been exercised on real hardware; the README's status section controls.
+21.1 Unverified on real hardware. At the effective date the features never exercised on real hardware include unattended access before sign-in and while the console is not running (including its notice), remote update installs and restarts, the TLS front door, dynamic DNS, the move from PostgreSQL to the embedded database, desktop-duplication capture and multiple monitors, whole-machine imaging - both capturing an image and restoring one to a disk, which erases that disk - and Square charges. Only attended remote desktop has been exercised on real hardware; the README's status section controls.
 
 21.2 Not code-signed. Windows SmartScreen warns before running the executables, the elevation prompt shows an unknown publisher, and Smart App Control blocks the file outright (turning Smart App Control off is the computer owner's decision and cannot be reversed without resetting Windows); the publisher name in the file's properties is not a signature. Verify a download against the published SHA-256 checksum before installing, and do not tell a Customer the files are signed.
 
