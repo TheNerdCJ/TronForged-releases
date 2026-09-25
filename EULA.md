@@ -170,7 +170,9 @@ Licensed, not sold, and there is no TronForged cloud: each repair shop (the "Sho
 
 16.3 Email. Invoices go out from the Shop's own SMTP mailbox; engine notifications and support requests use a per-console SMTP setting that ships disabled; messages carry no tracking.
 
-16.4 The Shop server contacts Anthropic, Square, Cloudflare (dynamic DNS), S3-compatible storage, the Shop's SMTP provider and GitHub (anonymously, for releases) only when the Shop configures them, under the Shop's own contracts; the Licensor is not party to any of these.
+16.4 The Shop server contacts Anthropic, Square, Cloudflare (dynamic DNS), S3-compatible storage, the Shop's SMTP provider, GitHub (anonymously, for releases) and the address services of Section 16.5 only when the Shop configures them, and, whenever the Shop advertises a public address for its server, Cloudflare's public address-echo service to learn that address. All of these run under the Shop's own contracts; the Licensor is not party to any of them.
+
+16.5 Address lookup. Address lookup is off until the Shop switches it on in the Server Console, and each service has its own switch. While it is on, the Shop server - never a console - sends the address text a person at the Shop types into an address box, and nothing else about the Customer (no name, email address or telephone number), to the services the Shop has switched on: for suggestions, the Photon service operated by komoot, or another Photon server the Shop names; and, to check an address a person has chosen, the geocoder of the United States Census Bureau. Each service also sees the Shop server's public IP address and the time of each request. Suggestions are OpenStreetMap data, available under the Open Database License, and are credited to OpenStreetMap contributors wherever they are shown; a person at the Shop chooses a suggestion or ignores it, and nothing is saved until that person saves the customer. A Census check says only whether the house number falls within an address range the Census Bureau knows; it does not confirm that mail can be delivered there. Answers are kept in the Shop server's memory to avoid repeating a request and are gone when it restarts; the audit log records that a lookup was made, never the address. The Shop is responsible for sending its Customers' addresses to these services and for their terms.
 
 ## Part III - The Customer's terms
 
@@ -210,6 +212,8 @@ Turning start-with-Windows off, or closing the console, stops the console but no
 20.1 If you back up to your Shop, it can restore and read those backups; no console in this release can set a passphrase that would stop it (Section 13.2). Nothing deletes a stored backup on its own, but your Shop can delete one on request (Section 13.3).
 
 20.2 Requests about your data - to see, correct or delete it, or to learn who connected and when - go to your Shop, which holds it; the Licensor holds nothing about you.
+
+20.3 If your Shop switches on address lookup (Section 16.5), the address your Shop types for you is sent from your Shop's server to the map and address services named there, to suggest or check it; your name, email address and telephone number are not sent. Your Shop chooses this and is responsible for it.
 
 ## Part IV - Terms that apply to everyone
 
@@ -300,5 +304,10 @@ License names are as the Licensor reads each package's metadata; the component's
 ### Part 2 - Downloaded at run time from their vendors (never distributed)
 
 The Downloaded Tools are those the Software's tool catalog names at the installed version: malware scanners and removers; uninstallers; hardware, disk, recovery, cleaning, driver and network utilities; the PSWindowsUpdate and Microsoft.WinGet.Client modules and winget; the Dell, Lenovo and HP update utilities (Section 5.3); the Microsoft .NET Desktop Runtime installer; the Microsoft PowerShell 7 archive (Section 5.3); and Windows installation media via Fido and Rufus - each under its vendor's terms (Section 5.2). Flagged: Dr.Web CureIt! (home use only); HitmanPro and Hard Disk Sentinel (trials); TDSSKiller (discontinued); Kaspersky Virus Removal Tool (not available in the United States). PawnIO is offered as an optional driver the Software never installs.
+
+### Part 3 - Online services the Shop may switch on (never distributed)
+
+- OpenStreetMap data, through komoot's Photon service or another Photon server the Shop names: Open Database License 1.0; credited to OpenStreetMap contributors (openstreetmap.org/copyright) wherever suggestions are shown.
+- United States Census Bureau geocoder: a service of the United States government; its answers are not a postal deliverability check.
 
 END OF AGREEMENT
