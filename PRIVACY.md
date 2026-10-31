@@ -32,6 +32,14 @@ That reporting includes a regular status beat from each enrolled console (such a
 
 The Software also keeps files on the computer it runs on - the connection details for the Shop's server, logs, reports and downloaded tools - in a data folder beside the program; Section 19.3 of the Agreement says who can open it. Backups, disk images and transfer packages that the Shop chooses to write to its own drives or network shares stay there (Agreement, Sections 13.1 and 13.5). None of this is sent to us.
 
+### 4.1A The Temporary Fleet PIN page and the one-time support program
+
+If a Shop turns on Temporary Fleet, its server serves a web page at the Shop's own address. A person whom a technician has given a six-digit PIN types it there and downloads a one-time support program. The page is served by the Shop's server, not by us. It sets no cookies, contains no analytics or advertising, and loads nothing from anywhere else; its only outside link is to this policy. It asks the browser whether the computer runs Windows and on which kind of processor, only to offer the right download, and does not keep the answer.
+
+The Shop's server records in its audit log the network (IP) address each PIN attempt and download comes from (behind Cloudflare's proxy, the address Cloudflare reports), each PIN attempt and whether it worked - never the PIN itself - each download, and, once the program connects, the computer's name. The PIN and the session exist only in the server's memory and end within minutes; the audit log is kept as the Shop keeps the rest of its audit log (Agreement, Section 12.2).
+
+The program runs with administrator rights, which Windows asks the person to approve. It sends the Shop's server the PIN and the computer's name and, during the session, the screen and the technician's keyboard and mouse input, over an encrypted connection. The program itself installs nothing and stores nothing on the computer; the downloaded file stays where the browser saved it, and the person may delete it. If the technician offers to install the full TronForged program and the person allows it, the program downloads it from the Shop's server, checks it against the publisher's release signature and starts the normal TronForged installer, which shows its own choices and the licence; the Shop's server records that install's version, its SHA-256 and the network address it went to. What the installed program sends and keeps is described in the rest of this policy, as for any other install. None of the support session is sent to us. The Shop's own privacy notice covers what the Shop records, and the page says so.
+
 ### 4.2 To GitHub, when checking for releases
 
 We publish releases on GitHub. Two parts of the Software read that public Release Feed:
