@@ -1,6 +1,6 @@
 # TronForged Privacy Policy
 
-Effective [EFFECTIVE DATE]. Published by Nycz Software Solutions with TronForged release 0.456.0. Each version of this policy is published with its release on the Release Feed and describes the Software as built at its effective date.
+Effective 2026-10-30. Published by Nycz Software Solutions with TronForged release 0.456.0. Each version of this policy is published with its release on the Release Feed and describes the Software as built at its effective date.
 
 ## 1. Who we are
 
