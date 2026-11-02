@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>TronForged - Connect with Square</title>
+<style>
+body { font-family: Segoe UI, Arial, sans-serif; background: #14181f; color: #e8ecf2; margin: 0; padding: 24px 16px; }
+main { max-width: 640px; margin: 0 auto; }
+h1 { font-size: 20px; }
+p { color: #aab4c3; line-height: 1.5; }
+label { display: block; margin: 16px 0 4px; font-weight: 600; }
+.row { display: flex; gap: 8px; }
+input { flex: 1; min-width: 0; font: 14px Consolas, monospace; padding: 8px; background: #1f2530; color: #e8ecf2; border: 1px solid #3a4352; border-radius: 4px; }
+button { padding: 8px 14px; background: #2f6fd6; color: #fff; border: 0; border-radius: 4px; cursor: pointer; }
+.err { color: #f2685c; }
+</style>
+</head>
+<body>
+<main>
+<h1>Connect with Square</h1>
+<p id="lead">Square has approved the connection. Copy the code and the state below into the Server Console's Square page and click Finish connecting. This page sends nothing anywhere.</p>
+<label for="code">Code</label>
+<div class="row"><input id="code" readonly><button type="button" data-copy="code">Copy</button></div>
+<label for="state">State</label>
+<div class="row"><input id="state" readonly><button type="button" data-copy="state">Copy</button></div>
+<p id="error" class="err"></p>
+</main>
+<script>
+(function () {
+  var q = new URLSearchParams(window.location.search);
+  document.getElementById("code").value = q.get("code") || "";
+  document.getElementById("state").value = q.get("state") || "";
+  var e = q.get("error");
+  if (e || !q.get("code")) {
+    document.getElementById("lead").textContent = "Square did not send a code, so nothing was connected. Go back to the Server Console and click Connect with Square again.";
+    document.getElementById("error").textContent = e ? (e + ": " + (q.get("error_description") || "")) : "";
+  }
+  document.querySelectorAll("button[data-copy]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var f = document.getElementById(b.getAttribute("data-copy"));
+      f.select();
+      if (navigator.clipboard) { navigator.clipboard.writeText(f.value); } else { document.execCommand("copy"); }
+      b.textContent = "Copied";
+    });
+  });
+})();
+</script>
+</body>
+</html>
