@@ -101,7 +101,7 @@ What the Software does to protect information, in summary (the Agreement, Sectio
 - Passwords for signing in to the Software are kept as salted and peppered hashes. The secret behind an authenticator app, for staff and for customers, is kept sealed on the Shop server; the audit log records a Customer's two-factor events with its account ids and a keyed one-way tag of its email address, not the address. A computer's own sign-in password that a Customer gives the Shop with a repair is stored sealed, shown only to the technicians working that job, and each showing is recorded (Agreement, Section 16.6).
 - A full card number is not stored: the Software records a card's brand and last four digits, and Square holds the card.
 - Diagnostic records are scrubbed on the computer before they are sent to the Shop server.
-- Every remote action is attributed to a technician account and recorded in the Shop server's audit log; no screen content or keystrokes are stored.
+- Every remote action is attributed to a technician account and recorded in the Shop server's audit log; no screen content, keystrokes or clipboard text are stored. When text is copied between the two computers during a remote session (Agreement, Section 10.12), only its direction and length are recorded, in the Customer computer's log (in a one-time support session, only in the support program's memory until it closes).
 
 We do not promise more than this. The Software is pre-release (0.x) software provided as is (Agreement, Sections 21 and 23). The security of each Shop's server - its hardware, disk encryption, physical security, network exposure, accounts and updates - is the Shop's responsibility (Agreement, Sections 12.3 and 12.4).
 
