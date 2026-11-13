@@ -42,6 +42,8 @@ Actions that only read (for example listing users, group members, virtual machin
 
 The Software also keeps files on the computer it runs on - the connection details for the Shop's server, logs, reports and downloaded tools - in a data folder beside the program; Section 19.3 of the Agreement says who can open it. Backups, disk images and transfer packages that the Shop chooses to write to its own drives or network shares stay there (Agreement, Sections 13.1 and 13.5). None of this is sent to us.
 
+When a technician opens Windows Remote Desktop through TronForged: an audit record of who opened it, on which computer, when, for how long and the bytes each way, and of each request to turn Remote Desktop on or off. Never the screen, keystrokes, the Windows password or any Remote Desktop traffic.
+
 ### 4.1A The Temporary Fleet PIN page and the one-time support program
 
 When Temporary Fleet is on (by default once the Shop's server has its web transport set up), its server serves a web page at the Shop's own address. A person whom a technician has given a six-digit PIN types it there and downloads a one-time support program. The page is served by the Shop's server, not by us. It sets no cookies, contains no analytics or advertising, and loads nothing from anywhere else; its only outside link is to this policy. It asks the browser whether the computer runs Windows and on which kind of processor, only to offer the right download, and does not keep the answer.
